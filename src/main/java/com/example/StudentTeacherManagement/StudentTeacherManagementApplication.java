@@ -1,25 +1,18 @@
 package com.example.StudentTeacherManagement;
 
-import com.example.StudentTeacherManagement.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudentTeacherManagementApplication implements CommandLineRunner {
+public class StudentTeacherManagementApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(StudentTeacherManagementApplication.class, args);
 
     }
 
-    @Override
-    public void run(String... args) throws Exception {
 
-    }
 
-    @Autowired
-    private StudentRepository studentRepo;
 
 }
