@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
     <changeSet  author="Madhurshani"  id="changelog-1.0">
-        <createTable  tableName="students">
-            <column  name="id"  type="LONG" autoIncrement="true">
+        <createTable  tableName="students" >
+            <column  name="id"  type="Integer" autoIncrement="true">
                 <constraints   primaryKey="true"/>
             </column>
             <column name="first_name" type="VARCHAR(255)"/>
@@ -22,22 +22,5 @@
             <column name="id"></column>
         </createIndex>
     </changeSet>
-    <changeSet id="changelog-insert" author="Madhurshani">
-        <insert tableName="students">
-            <column name="first_name" value="Ann"/>
-            <column name="last_name" value="Perera"/>
-            <column name="email" value="ann@gmail.com"/>
-            <column name="gender" value="Female"/>
-            <column name="dob" value="1992-08-05"/>
-            <column name="teacher" value="Mrs.Kamala"/>
-        </insert>
-        <insert tableName="students">
-            <column name="first_name" value="John"/>
-            <column name="last_name" value="Mills"/>
-            <column name="email" value="john@gmail.com"/>
-            <column name="gender" value="Male"/>
-            <column name="dob" value="1992-08-05"/>
-            <column name="teacher" value="Mrs.Kamala"/>
-        </insert>
-    </changeSet>
+
 </databaseChangeLog>

@@ -14,7 +14,8 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "first_name")
     @Size(min = 3, max = 50)
@@ -87,11 +88,11 @@ public class Student {
         this.teacher = teacher;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

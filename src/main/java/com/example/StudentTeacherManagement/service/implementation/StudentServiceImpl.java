@@ -43,12 +43,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    public Student getStudentById(Long id) {
+    public Student getStudentById(Integer id) {
         return studentRepo.findById(id).get();
     }
 
 
-    public void deleteStudent(Long id) {
+    public void deleteStudent(Integer id) {
         studentRepo.deleteById(id);
     }
 

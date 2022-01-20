@@ -56,7 +56,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/edit/{id}")
-    public String editStudent(@PathVariable Long id, Model model) {
+    public String editStudent(@PathVariable Integer id, Model model) {
         model.addAttribute("student", studentService.getStudentById(id));
         List<String> listTeachers = Arrays.asList("Ms.Anne", "Mr.Perera", "Mrs.Kamala");
         model.addAttribute("listTeachers", listTeachers);
@@ -64,7 +64,7 @@ public class StudentController {
     }
 
     @PostMapping("/students/{id}")
-    public String updateStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
+    public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") Student student, Model model) {
         Student stu = studentService.getStudentById(id);
         stu.setId(id);
         stu.setFirstName(student.getFirstName());
@@ -78,7 +78,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public String deleteStudent(@PathVariable Long id) {
+    public String deleteStudent(@PathVariable Integer id) {
         studentService.deleteStudent(id);
         return "redirect:/students";
     }

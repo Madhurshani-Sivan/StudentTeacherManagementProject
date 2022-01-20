@@ -15,9 +15,9 @@ public interface StudentService {
 
     Student editStudent(Student student);
 
-    Student getStudentById(Long id);
+    Student getStudentById(Integer id);
 
-    void deleteStudent(Long id);
+    void deleteStudent(Integer id);
 
     JasperPrint exportpdf() throws SQLException, JRException, IOException;
 }
