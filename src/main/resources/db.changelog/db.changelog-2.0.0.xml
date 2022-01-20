@@ -4,9 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-  <include file="db.changelog/db.changelog-1.0.0.xml"/>
-  <include file="db.changelog/db.changelog-3.0.0.xml"/>
 
-
-
+    <changeSet id="mergeCol" author="Madhurshani">
+        <mergeColumns tableName="students" column1Name="first_name" joinString="A String" column2Name="last_name" finalColumnName="full_name"
+                      finalColumnType="VARCHAR(255)"></mergeColumns>
+    </changeSet>
 </databaseChangeLog>
