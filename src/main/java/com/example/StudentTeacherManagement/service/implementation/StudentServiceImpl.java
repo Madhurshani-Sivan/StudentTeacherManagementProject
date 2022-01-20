@@ -27,32 +27,32 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentDaoImpl studentDao;
 
-    @Override
+
     public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
 
-    @Override
+
     public Student saveStudent(Student student) {
         return studentRepo.save(student);
     }
 
-    @Override
+
     public Student editStudent(Student student) {
         return studentRepo.save(student);
     }
 
-    @Override
+
     public Student getStudentById(Long id) {
         return studentRepo.findById(id).get();
     }
 
-    @Override
+
     public void deleteStudent(Long id) {
         studentRepo.deleteById(id);
     }
 
-    @Override
+
     public JasperPrint exportpdf() throws SQLException, JRException, IOException {
         return studentDao.export();
     }
