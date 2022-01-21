@@ -17,15 +17,7 @@ public class Student {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "first_name")
-    @Size(min = 3, max = 50)
-    @NotBlank
-    private String firstName;
 
-    @Column(name = "last_name")
-    @Size(min = 3, max = 50)
-    @NotBlank
-    private String lastName;
 
     @Column(name = "email")
     @Email(message = "Please enter a valid email address")
@@ -43,6 +35,16 @@ public class Student {
     @NotBlank
     private String teacher;
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Column(name = "full_name")
+private String fullName;
     public String getGender() {
         return gender;
     }
@@ -71,21 +73,14 @@ public class Student {
 
     }
 
-    public Student(String firstName, String lastName, String email) {
+    public Student(Integer id, String email, String gender, Date dob, String teacher, String fullName) {
         super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    public Student(String firstName, String lastName, String email, String gender, Date dob, String teacher) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.id = id;
         this.email = email;
         this.gender = gender;
         this.dob = dob;
         this.teacher = teacher;
+        this.fullName = fullName;
     }
 
     public Integer getId() {
@@ -96,21 +91,7 @@ public class Student {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;
