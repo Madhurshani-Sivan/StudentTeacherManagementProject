@@ -4,9 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-<changeSet id="load" author="Madhurshani">
-    <loadUpdateData primaryKey="id" tableName="students" file="db.changelog/students.csv"></loadUpdateData>
-</changeSet>
+
     <changeSet id="viewError" author="Madhurshani">
         <createView viewName="first" >select id,first_name,last_name from students</createView>
     </changeSet>

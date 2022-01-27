@@ -67,7 +67,9 @@ public class StudentController {
     public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") Student student, Model model) {
         Student stu = studentService.getStudentById(id);
         stu.setId(id);
-      stu.setFullName(student.getFullName());
+      stu.setFirstName(student.getFirstName());
+        stu.setLastName(student.getLastName());
+
         stu.setEmail(student.getEmail());
         stu.setGender(student.getGender());
         stu.setDob(student.getDob());

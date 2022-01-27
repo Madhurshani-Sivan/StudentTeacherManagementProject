@@ -46,5 +46,7 @@
             <where>first_name='Anna'</where>
         </delete>
     </changeSet>
-
+    <changeSet id="load" author="Madhurshani">
+        <loadUpdateData primaryKey="id" tableName="students" file="db.changelog/students.csv"></loadUpdateData>
+    </changeSet>
 </databaseChangeLog>
