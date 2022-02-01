@@ -1,5 +1,6 @@
 package com.example.StudentTeacherManagement.service;
 
+import com.example.StudentTeacherManagement.DTO.ErrorDto;
 import com.example.StudentTeacherManagement.model.Student;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -11,7 +12,7 @@ import java.util.List;
 public interface StudentService {
     List<Student> getAllStudents();
 
-    Student saveStudent(Student student);
+    ErrorDto saveStudent(Student student) ;
 
     Student editStudent(Student student);
 

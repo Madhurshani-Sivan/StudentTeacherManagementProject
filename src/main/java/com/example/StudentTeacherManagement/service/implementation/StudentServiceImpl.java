@@ -1,10 +1,12 @@
 package com.example.StudentTeacherManagement.service.implementation;
 
+import com.example.StudentTeacherManagement.DTO.ErrorDto;
 import com.example.StudentTeacherManagement.model.Student;
 import com.example.StudentTeacherManagement.model.StudentDaoImpl;
 import com.example.StudentTeacherManagement.repository.StudentRepository;
 import com.example.StudentTeacherManagement.service.StudentService;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 
@@ -13,19 +15,21 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
+    @Autowired
     private StudentRepository studentRepo;
+    @Autowired
+    private StudentDaoImpl studentDao;
 
     public StudentServiceImpl(StudentRepository studentRepo) {
         super();
         this.studentRepo = studentRepo;
     }
-
-    @Autowired
-    private StudentDaoImpl studentDao;
 
 
     public List<Student> getAllStudents() {
@@ -33,8 +37,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    public Student saveStudent(Student student) {
-        return studentRepo.save(student);
+    public ErrorDto saveStudent(Student student) {
+        if (student.getFirstName().isEmpty() || student.getLastName().isEmpty() || student.getEmail().isEmpty() || student.getGender().isEmpty() || student.getTeacher().isEmpty()) {
+            return new ErrorDto(400, "Contains Empty Values");
+        }
+        if (!student.getEmail().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
+            return new ErrorDto(400, "Invalid Email Address");
+
+        }
+        if (!student.getFirstName().matches("[A-Za-z]*") || !student.getLastName().matches("[A-Za-z]*") || !student.getTeacher().matches("[A-Za-z]*")) {
+            return new ErrorDto(400, "Invalid Name Format");
+
+        }
+        if (student.getDob().after(new Date())) {
+            return new ErrorDto(400, "Check your birthdate again");
+        }
+        studentRepo.save(student);
+        return new ErrorDto(200, "Saved Successfully");
     }
 
 
@@ -53,7 +72,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    public JasperPrint exportpdf() throws SQLException, JRException, IOException {
+    public JasperPrint exportpdf() throws JRException, SQLException, IOException {
         return studentDao.export();
     }
 

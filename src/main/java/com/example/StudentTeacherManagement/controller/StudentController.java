@@ -1,59 +1,43 @@
 package com.example.StudentTeacherManagement.controller;
 
+import com.example.StudentTeacherManagement.DTO.ErrorDto;
 import com.example.StudentTeacherManagement.model.Student;
 import com.example.StudentTeacherManagement.service.StudentService;
 import net.sf.jasperreports.engine.*;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost/8080")
+@RequestMapping
 public class StudentController {
+    @Autowired
     private StudentService studentService;
 
-    public StudentController(StudentService studentService) {
-        super();
-        this.studentService = studentService;
-    }
 
     @GetMapping("/students")
-    public String listStudents(Model model) {
-        model.addAttribute("students", studentService.getAllStudents());
-        return "students";
+    public List<Student> listStudents(Model model) {
+        return studentService.getAllStudents();
     }
 
-    @GetMapping("/add")
-    public String addStudents(Model model) {
-
-        Student student = new Student();
-        model.addAttribute("student", student);
-
-        List<String> listTeachers = Arrays.asList("Ms.Anne", "Mr.Perera", "Mrs.Kamala");
-        model.addAttribute("listTeachers", listTeachers);
-        return "addStudent";
+    @PostMapping("/add")
+    public ErrorDto addStudents( @RequestBody Student student)  {
+        return studentService.saveStudent(student);
     }
 
-    @PostMapping("/students")
-    public String saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult, Model model) {
-        if (!bindingResult.hasErrors()) {
-            studentService.saveStudent(student);
-            return "redirect:/students";
-        } else {
-            List<String> listTeachers = Arrays.asList("Ms.Anne", "Mr.Perera", "Mrs.Kamala");
-            model.addAttribute("listTeachers", listTeachers);
-            return "addStudent";
-        }
-    }
 
     @GetMapping("/students/edit/{id}")
     public String editStudent(@PathVariable Integer id, Model model) {
@@ -67,7 +51,7 @@ public class StudentController {
     public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") Student student, Model model) {
         Student stu = studentService.getStudentById(id);
         stu.setId(id);
-      stu.setFirstName(student.getFirstName());
+        stu.setFirstName(student.getFirstName());
         stu.setLastName(student.getLastName());
 
         stu.setEmail(student.getEmail());
@@ -78,10 +62,10 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @GetMapping("/students/{id}")
+    @DeleteMapping("/students/{id}")
     public String deleteStudent(@PathVariable Integer id) {
         studentService.deleteStudent(id);
-        return "redirect:/students";
+        return "Deleted Successfully";
     }
 
     @RequestMapping(value = "/export", method = RequestMethod.GET)
