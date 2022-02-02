@@ -63,9 +63,8 @@ public class StudentController {
     }
 
     @DeleteMapping("/students/{id}")
-    public String deleteStudent(@PathVariable Integer id) {
-        studentService.deleteStudent(id);
-        return "Deleted Successfully";
+    public ErrorDto deleteStudent(@PathVariable Integer id) {
+     return   studentService.deleteStudent(id);
     }
 
     @RequestMapping(value = "/export", method = RequestMethod.GET)

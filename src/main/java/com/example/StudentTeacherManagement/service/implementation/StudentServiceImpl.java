@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     public ErrorDto saveStudent(Student student) {
-        if (student.getFirstName().isEmpty() || student.getLastName().isEmpty() || student.getEmail().isEmpty() || student.getGender().isEmpty() || student.getTeacher().isEmpty()) {
+        if (student.getFirstName().isEmpty() || student.getLastName().isEmpty() || student.getEmail().isEmpty() || student.getGender().isEmpty() || student.getTeacher().isEmpty() || student.getDob() == null) {
             return new ErrorDto(400, "Contains Empty Values");
         }
         if (!student.getEmail().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
@@ -52,6 +52,7 @@ public class StudentServiceImpl implements StudentService {
         if (student.getDob().after(new Date())) {
             return new ErrorDto(400, "Check your birthdate again");
         }
+
         studentRepo.save(student);
         return new ErrorDto(200, "Saved Successfully");
     }
@@ -67,8 +68,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    public void deleteStudent(Integer id) {
+    public ErrorDto deleteStudent(Integer id) {
         studentRepo.deleteById(id);
+        return new ErrorDto(300,"Deleted Sucessfully");
     }
 
 
