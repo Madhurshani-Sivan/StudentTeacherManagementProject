@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public List<Student> getAllStudents() {
-        return studentRepo.findAll();
+        return studentRepo.findAllByOrderByIdDesc();
     }
 
     public ErrorDto saveStudent(Student student) {
@@ -55,7 +55,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Student getStudentById(Integer id) {
-        return studentRepo.findById(id).get();
+        return studentRepo.findStudentById(id);
     }
 
     public ErrorDto deleteStudent(Integer id) {

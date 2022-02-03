@@ -31,6 +31,11 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/students/{id}")
+    public Student getStudentById(@PathVariable Integer id) {
+        return studentService.getStudentById(id);
+    }
+
     @PostMapping("/add")
     public ErrorDto addStudents(@RequestBody Student student) {
         return studentService.saveStudent(student);

@@ -1,6 +1,5 @@
 package com.example.StudentTeacherManagement.model;
 
-
 import net.sf.jasperreports.engine.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +26,7 @@ public class StudentDaoImpl {
     @Autowired
     private ResourceLoader resourceLoader;
 
-    public JasperPrint export() throws SQLException, JRException, InvalidJpaQueryMethodException, IOException {
+    public JasperPrint export() throws SQLException, JRException, InvalidJpaQueryMethodException, IOException,NullPointerException {
         Connection con = jdbcTemplate.getDataSource().getConnection();
         String path = resourceLoader.getResource("classpath:students.jrxml").getURI().getPath();
         JasperReport jasperReport = JasperCompileManager.compileReport(path);

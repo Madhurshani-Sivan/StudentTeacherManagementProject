@@ -1,11 +1,9 @@
 package com.example.StudentTeacherManagement.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
-
 
 @Entity
 @Table(name = "students")
@@ -110,6 +108,5 @@ public class Student {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
 }
