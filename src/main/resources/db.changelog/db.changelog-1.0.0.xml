@@ -4,10 +4,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet  author="Madhurshani"  id="changelog-1.0">
-        <createTable  tableName="students" >
-            <column  name="id"  type="Integer" autoIncrement="true">
-                <constraints   primaryKey="true"/>
+    <changeSet author="Madhurshani" id="changelog-1.0">
+        <createTable tableName="students">
+            <column name="id" type="Integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
             </column>
             <column name="first_name" type="VARCHAR(255)"/>
             <column name="last_name" type="VARCHAR(255)"/>
@@ -17,30 +17,30 @@
             <column name="teacher" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-<changeSet id="changelog-insert" author="Madhurshani">
-    <insert tableName="students">
-        <column name="first_name" value="Anna"/>
-        <column name="last_name" value="Mills"/>
-        <column name="email" value="ann@gmail.com"/>
-        <column name="gender" value="Female"/>
-        <column name="dob" value="1998-02-25"/>
-        <column name="teacher" value="Anna"/>
-    </insert>
-    <insert tableName="students">
-        <column name="first_name" value="Peter"/>
-        <column name="last_name" value="Pan"/>
-        <column name="email" value="pp@gmail.com"/>
-        <column name="gender" value="Male"/>
-        <column name="dob" value="1996-02-25"/>
-        <column name="teacher" value="Mary"/>
-    </insert>
-</changeSet>
-<changeSet id="update" author="Madhurshani">
-    <update tableName="students">
-        <column name="email" value="peter@yahoo.com"/>
-        <where>first_name='Peter'</where>
-    </update>
-</changeSet>
+    <changeSet id="changelog-insert" author="Madhurshani">
+        <insert tableName="students">
+            <column name="first_name" value="Anna"/>
+            <column name="last_name" value="Mills"/>
+            <column name="email" value="ann@gmail.com"/>
+            <column name="gender" value="Female"/>
+            <column name="dob" value="1998-02-25"/>
+            <column name="teacher" value="Anna"/>
+        </insert>
+        <insert tableName="students">
+            <column name="first_name" value="Peter"/>
+            <column name="last_name" value="Pan"/>
+            <column name="email" value="pp@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="dob" value="1996-02-25"/>
+            <column name="teacher" value="Mary"/>
+        </insert>
+    </changeSet>
+    <changeSet id="update" author="Madhurshani">
+        <update tableName="students">
+            <column name="email" value="peter@yahoo.com"/>
+            <where>first_name='Peter'</where>
+        </update>
+    </changeSet>
     <changeSet id="delete" author="Madhurshani">
         <delete tableName="students">
             <where>first_name='Anna'</where>

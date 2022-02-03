@@ -2,11 +2,8 @@ package com.example.StudentTeacherManagement.model;
 
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.sql.Date;
 
 
@@ -18,6 +15,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @Column(name = "first_name")
     @NotEmpty(message = "First name must not be empty")
     private String firstName;
@@ -25,7 +23,6 @@ public class Student {
     @Column(name = "last_name")
     @NotEmpty(message = "Last name must not be empty")
     private String lastName;
-
 
     @Column(name = "email")
     @Email(message = "Please enter a valid email address")
@@ -42,7 +39,6 @@ public class Student {
     @Column(name = "teacher")
     @NotEmpty(message = "Teacher name must not be empty")
     private String teacher;
-
 
     public Student() {
 
@@ -66,7 +62,6 @@ public class Student {
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public String getEmail() {
         return email;

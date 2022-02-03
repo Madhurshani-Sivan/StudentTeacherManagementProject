@@ -4,10 +4,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet  author="Madhurshani"  id="changelog-3.0">
-        <createTable  tableName="teachers" >
-            <column  name="id"  type="Integer" autoIncrement="true">
-                <constraints   primaryKey="true"/>
+    <changeSet author="Madhurshani" id="changelog-3.0">
+        <createTable tableName="teachers">
+            <column name="id" type="Integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(255)"/>
             <column name="email" type="VARCHAR(255)"/>

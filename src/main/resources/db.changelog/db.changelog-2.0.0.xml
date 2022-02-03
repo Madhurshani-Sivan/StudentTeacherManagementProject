@@ -6,17 +6,22 @@
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
     <changeSet id="viewError" author="Madhurshani">
-        <createView viewName="first" >select id,first_name,last_name from students</createView>
+        <createView viewName="first">select id, first_name, last_name
+                                     from students</createView>
     </changeSet>
     <changeSet id="view" author="Madhurshani">
-        <createView viewName="name">select id,email from students where gender='Male'</createView>
+        <createView viewName="name">select id, email
+                                    from students
+                                    where gender = 'Male'</createView>
     </changeSet>
     <changeSet id="mergeCol" author="Madhurshani">
-        <mergeColumns tableName="students" column1Name="first_name" joinString=" " column2Name="last_name" finalColumnName="full_name"
-                      finalColumnType="VARCHAR(255)" ></mergeColumns>
+        <mergeColumns tableName="students" column1Name="first_name" joinString=" " column2Name="last_name"
+                      finalColumnName="full_name"
+                      finalColumnType="VARCHAR(255)"></mergeColumns>
     </changeSet>
     <changeSet id="view2" author="Madhurshani">
-        <createView viewName="name2" >select id,full_name from students</createView>
+        <createView viewName="name2">select id, full_name
+                                     from students</createView>
     </changeSet>
 
 </databaseChangeLog>

@@ -12,7 +12,7 @@ import java.util.List;
 public interface StudentService {
     List<Student> getAllStudents();
 
-    ErrorDto saveStudent(Student student) ;
+    ErrorDto saveStudent(Student student);
 
     Student editStudent(Student student);
 
